@@ -1,0 +1,49 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { ERadio, ERadioModule } from './';
+
+# Radio
+
+<Meta title="Core/Radio" decorators={[moduleMetadata({ imports: [ERadioModule] })]} />
+
+<Props of={ERadio} />
+
+<Preview>
+    <Story name="default" height="80px">
+        {{
+            template: `
+                <div style="display: flex;">
+                    <e-radio style="width: 50%;" [inputId]="radio1">Not checked</e-radio>
+                    <e-radio style="width: 50%;" [inputId]="radio2"[checked]="true">Checked</e-radio>
+                </div>
+            `,
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="readonly" height="80px">
+        {{
+            template: `
+                <div style="display: flex;">
+                    <e-radio [readonly]="true" style="width: 50%;" [inputId]="radio1">Not checked</e-radio>
+                    <e-radio [readonly]="true" style="width: 50%;" [inputId]="radio2"[checked]="true">Checked</e-radio>
+                </div>
+            `,
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="disabled" height="80px">
+        {{
+            template: `
+                <div style="display: flex;">
+                    <e-radio [disabled]="true" style="width: 50%;" [inputId]="radio1">Not checked</e-radio>
+                    <e-radio [disabled]="true" style="width: 50%;" [inputId]="radio2"[checked]="true">Checked</e-radio>
+                </div>
+            `,
+        }}
+    </Story>
+</Preview>

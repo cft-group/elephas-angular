@@ -1,0 +1,75 @@
+import { FormControl, Validators } from '@angular/forms';
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { ECheckbox, ECheckboxModule } from './';
+import { ECheckboxDemoModule } from './checkbox-demo.module';
+
+
+# Checkbox
+
+<Meta title="Core/Checkbox" decorators={[moduleMetadata({ imports: [ECheckboxModule, ECheckboxDemoModule] })]} />
+
+<Props of={ECheckbox} />
+
+<Preview>
+    <Story name="default" height="80px">
+        {{
+            template: `
+                <div style="display: flex;">
+                    <e-checkbox style="width: 50%;" [inputId]="checkboxId1" [control]="control">Not checked</e-checkbox>
+                    <e-checkbox style="width: 50%;" [inputId]="checkboxId2" [checked]="true">Checked</e-checkbox>
+                </div>
+            `,
+            props: {
+                checkboxId1: 'checkbox1',
+                control: new FormControl('', [ Validators.required ]),
+                checkboxId2: 'checkbox2'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="readonly" height="80px">
+        {{
+            template: `
+                <div style="display: flex;">
+                    <e-checkbox [readonly]="true" style="width: 50%;" [inputId]="checkboxId1">Not checked</e-checkbox>
+                    <e-checkbox [readonly]="true" style="width: 50%;" [inputId]="checkboxId2" [checked]="true">Checked</e-checkbox>
+                </div>
+            `,
+            props: {
+                checkboxId1: 'checkbox1',
+                checkboxId2: 'checkbox2'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="disabled" height="80px">
+        {{
+            template: `
+                <div style="display: flex;">
+                    <e-checkbox [disabled]="true" style="width: 50%;" [inputId]="checkboxId1">Not checked</e-checkbox>
+                    <e-checkbox [disabled]="true" style="width: 50%;" [inputId]="checkboxId2" [checked]="true">Checked</e-checkbox>
+                </div>
+            `,
+            props: {
+                checkboxId1: 'checkbox1',
+                checkboxId2: 'checkbox2'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="form" height="80px">
+        {{
+            template: `
+                <e-checkbox-demo></e-checkbox-demo>
+            `,
+        }}
+    </Story>
+</Preview>

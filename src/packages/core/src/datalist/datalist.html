@@ -1,0 +1,11 @@
+<div
+    [class]="data?.className"
+    [ngClass]="{ '_e_datalist': true }">
+    <ng-container *ngIf="data && data.items">
+        <e-datalist-item
+            *ngFor="let item of data.items"
+            [item]="item"
+            [titleWidth]="data?.titleWidth">
+        </e-datalist-item>
+    </ng-container>
+</div>

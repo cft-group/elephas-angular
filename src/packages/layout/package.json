@@ -1,0 +1,25 @@
+{
+  "name": "@elephas/angular-layout",
+  "private": false,
+  "license": "SEE LICENSE IN LICENSE.md",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0",
+  "dependencies": {
+    "@elephas/angular-core": "0.0.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^10.0.5",
+    "@angular/compiler": "^10.0.5",
+    "@angular/core": "^10.0.5",
+    "@angular/forms": "^10.0.5",
+    "@angular/router": "^10.0.5",
+    "@elephas/core": "^1.0.0",
+    "@elephas/layout": "^1.0.0"
+  },
+  "scripts": {
+    "build": "export PACKAGE_NAME=`basename $INIT_CWD` && ng build --prod $PACKAGE_NAME",
+    "prepublishOnly": "npm run build"
+  }
+}

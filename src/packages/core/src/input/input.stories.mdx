@@ -1,0 +1,101 @@
+import { FormControl, Validators } from '@angular/forms';
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EInput, EInputModule } from './';
+
+# Input
+
+<Meta title="Core/Input" decorators={[moduleMetadata({ imports: [EInputModule] })]} />
+
+<Props of={EInput} />
+
+<Preview>
+    <Story name="default" height="120px">
+        {{
+            template: `
+                <e-input
+                    [width]="width"
+                    [label]="label"
+                    [value]="value"
+                    [hint]="hint">
+                </e-input>
+            `,
+            props: {
+                width: 12,
+                label: 'Где выдан паспорт',
+                value: 'ОВД г. Новосибирска по Советскому р-ну, код 540-016',
+                hint: 'Заполнять так же, как написано в паспорте',
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="readonly" height="120px">
+        {{
+            template: `
+                <e-input
+                    [width]="width"
+                    [label]="label"
+                    [value]="value"
+                    [appearance]="appearance">
+                </e-input>
+            `,
+            props: {
+                label: 'Способ перевода',
+                width: 12,
+                value: 'Реализация несанкционированного доступа к банкоматам и платежным терминалам',
+                appearance: 'readonly'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="disabled" height="120px">
+        {{
+            template: `
+                <e-input
+                    [width]="width"
+                    [label]="label"
+                    [value]="value"
+                    [hint]="hint"
+                    [appearance]="appearance">
+                </e-input>
+            `,
+            props: {
+                label: 'Номер обращения',
+                width: 6,
+                value: '1209489534589',
+                hint: 'В правоохранительные органы',
+                appearance: 'disabled'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="validation" height="120px">
+        {{
+            template: `
+                <e-input
+                    [width]="width"
+                    [label]="label"
+                    [value]="value"
+                    [hint]="hint"
+                    [appearance]="appearance"
+                    [control]="control"
+                    [error]="error">
+                </e-input>
+            `,
+            props: {
+                label: 'Адрес электронной почты',
+                width: 8,
+                type: 'email',
+                error: 'Неправильный почтовый адрес',
+                control: new FormControl('', [ Validators.email ])
+            },
+        }}
+    </Story>
+</Preview>

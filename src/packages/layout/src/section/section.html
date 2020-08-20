@@ -1,0 +1,11 @@
+<h2
+    *ngIf="heading && size === 'normal'"
+    class="_e_section__title">
+    {{ heading }}
+</h2>
+<h3
+    *ngIf="heading && size === 'small'"
+    class="_e_section__title">
+    {{ heading }}
+</h3>
+<ng-content></ng-content>

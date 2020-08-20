@@ -1,0 +1,21 @@
+<label
+    [class]="className"
+    [for]="inputId"
+    [ngClass]="{
+        '_e_radio': true,
+        '_e_radio_disabled': disabled || readonly
+    }">
+    <input
+        class="_e_radio__input"
+        type="radio"
+        [id]="inputId"
+        [name]="name"
+        [checked]="checked"
+        [disabled]="disabled || readonly"
+        [value]="value"
+        (change)="onRadioChange($event)">
+    <span class="_e_radio__icon"></span>
+    <span class="_e_radio__label">
+        <ng-content></ng-content>
+    </span>
+</label>

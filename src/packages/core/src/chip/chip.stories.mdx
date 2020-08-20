@@ -1,0 +1,23 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EChip, EChipModule } from './';
+
+# Chip
+
+<Meta title="Core/Chip" decorators={[moduleMetadata({ imports: [EChipModule] })]} />
+
+<Props of={EChip} />
+
+<Preview>
+    <Story name="chip" height="80px">
+        {{
+            template: `
+                <e-chip>Chip</e-chip>
+            `,
+        }}
+    </Story>
+</Preview>
+
+
+

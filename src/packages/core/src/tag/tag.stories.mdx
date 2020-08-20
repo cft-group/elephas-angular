@@ -1,0 +1,56 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { ETag, ETagModule } from './';
+
+# Tag
+
+<Meta title="Core/Tag" decorators={[moduleMetadata({ imports: [ETagModule] })]} />
+
+<Props of={ETag} />
+
+<Preview>
+    <Story name="default" height="80px">
+        {{
+            template: `<e-tag [appearance]="appearance">Default</e-tag>`,
+            props: {
+                appearance: 'default'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="success" height="80px">
+        {{
+            template: `<e-tag [appearance]="appearance">Success</e-tag>`,
+            props: {
+                appearance: 'success'
+            }
+        }}
+    </Story>
+</Preview>
+
+
+<Preview>
+    <Story name="warning" height="80px">
+        {{
+            template: `<e-tag [appearance]="appearance">Warning</e-tag>`,
+            props: {
+                appearance: 'warning'
+            }
+        }}
+    </Story>
+</Preview>
+
+
+<Preview>
+    <Story name="danger" height="80px">
+        {{
+            template: `<e-tag [appearance]="appearance">Danger</e-tag>`,
+            props: {
+                appearance: 'danger'
+            }
+        }}
+    </Story>
+</Preview>

@@ -1,0 +1,40 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EBadge, EBadgeModule } from './';
+
+# Badge
+
+<Meta title="Core/Badge" decorators={[moduleMetadata({ imports: [EBadgeModule] })]} />
+
+<Props of={EBadge} />
+
+<Preview>
+    <Story name="withNumber" height="80px">
+        {{
+            template: `<e-badge></e-badge>`,
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="withLongNumber" height="80px">
+        {{
+            template: `<e-badge>23</e-badge>`,
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="onSquare" height="80px">
+        {{
+            template: `
+                <e-badge [appearance]="appearance">1</e-badge>
+            `,
+            props: {
+                appearance: 'alert'
+            }
+        }}
+    </Story>
+</Preview>
+

@@ -1,0 +1,30 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { ETextarea, ETextareaModule } from './';
+
+# Textarea
+
+<Meta title="Core/Textarea" decorators={[moduleMetadata({ imports: [ETextareaModule] })]} />
+
+<Props of={ETextarea} />
+
+<Preview>
+    <Story name="default" height="200px">
+        {{
+            template: `
+                <e-textarea
+                    [label]="label"
+                    [width]="width"
+                    [rows]="rows">
+                </e-textarea>
+            `,
+            props: {
+                label: 'Комментарий',
+                width: '8',
+                rows: 6
+            }
+        }}
+    </Story>
+</Preview>

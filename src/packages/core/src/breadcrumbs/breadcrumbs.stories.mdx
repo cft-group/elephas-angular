@@ -1,0 +1,41 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EBreadcrumbs, EBreadcrumbsModule } from './';
+
+# Breadcrumbs
+
+<Meta title="Core/Breadcrumbs" decorators={[moduleMetadata({ imports: [EBreadcrumbsModule] })]} />
+
+<Props of={EBreadcrumbs} />
+
+<Preview>
+    <Story name="default" height="80px">
+        {{            
+            template: `
+                <e-breadcrumbs>
+                    <a eBreadcrumbItem *ngFor="let item of items" [href]="item.link" [isPassive]="item.isPassive">{{ item.title }}</a>
+                </e-breadcrumbs>
+            `,
+            props: {
+                items: [
+                    {
+                        link: '#',
+                        title: 'Index',
+                        isPassive: false
+                    },
+                    {
+                        link: '#',
+                        title: 'Group Section',
+                        isPassive: true
+                    },
+                    {
+                        link: '#',
+                        title: 'Child Section',
+                        isPassive: false
+                    }
+                ]
+            }
+        }}
+    </Story>
+</Preview>

@@ -1,0 +1,60 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EButton, EButtonModule } from './';
+
+# Button
+
+<Meta title="Core/Button" decorators={[moduleMetadata({ imports: [EButtonModule] })]} />
+
+<Props of={EButton} />
+
+<Preview>
+    <Story name="default" height="80px">
+        {{
+            template: `<button eButton>Expand</button>&nbsp;&nbsp;<button eButton [appearance]="primary">Create new file</button>&nbsp;&nbsp;<button eButton [appearance]="danger">Block user</button>`,
+            props: {
+                primary: 'primary',
+                danger: 'danger'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="small" height="80px">
+        {{
+            template: `<button eButton [size]="size">Expand</button>&nbsp;&nbsp;<button eButton [appearance]="primary" [size]="size">Create new file</button>&nbsp;&nbsp;<button eButton [appearance]="danger" [size]="size">Block user</button>`,
+            props: {
+                size: 'small',
+                primary: 'primary',
+                danger: 'danger'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="large" height="80px">
+        {{
+            template: `<button eButton [size]="size">Expand</button>&nbsp;&nbsp;<button eButton [appearance]="primary" [size]="size">Create new file</button>&nbsp;&nbsp;<button eButton [appearance]="danger" [size]="size">Block new user</button>`,
+            props: {
+                size: 'large',
+                primary: 'primary',
+                danger: 'danger'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="disabled" height="80px">
+        {{
+            template: `<button eButton [disabled]="true">Expand</button>&nbsp;&nbsp;<button eButton [appearance]="primary" [disabled]="true">Create new file</button>&nbsp;&nbsp;<button eButton [appearance]="danger" [disabled]="true">Block user</button>`,
+            props: {
+                primary: 'primary',
+                danger: 'danger'
+            }
+        }}
+    </Story>
+</Preview>

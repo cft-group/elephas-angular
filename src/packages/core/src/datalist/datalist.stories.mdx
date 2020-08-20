@@ -1,0 +1,40 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EDataList, EDataListModule } from './';
+
+# DataList
+
+<Meta title="Core/DataList" decorators={[moduleMetadata({ imports: [EDataListModule] })]} />
+
+<Props of={EDataList} />
+
+<Preview>
+    <Story name="default" height="320px">
+        {{
+            template: `
+                <e-datalist [data]="data"></e-datalist>
+            `,
+            props: {
+                data: {
+                    items: [
+                        {
+                            title: 'Title 1',
+                            value: 'Value 1'
+                        },
+                        {
+                            appearance: 'warning',
+                            title: 'Title 2',
+                            value: 'Value 2'
+                        },
+                        {
+                            appearance: 'danger',
+                            title: 'Title 3',
+                            value: 'Value 3'
+                        }
+                    ]
+                }
+            },
+        }}
+    </Story>
+</Preview>

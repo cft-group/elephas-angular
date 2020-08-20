@@ -1,0 +1,26 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { CommonModule } from '@angular/common';
+
+import { EMenu, EMenuItem, EMenuModule } from './';
+
+# Menu
+
+<Meta title="Core/Menu" decorators={[moduleMetadata({ imports: [CommonModule, EMenuModule] })]} />
+
+<Preview>
+    <Story name="default" height="180px">
+        {{
+            template: `
+                <e-menu>
+                    <div eMenuItem *ngFor="let item of items">{{ item }}</div>
+                </e-menu>
+            `,
+            props: {
+                items: ['Open', 'Show Metadata', 'Archive', 'Delete']
+            }
+        }}
+    </Story>
+</Preview>
+
+

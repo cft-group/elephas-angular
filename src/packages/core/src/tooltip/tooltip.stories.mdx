@@ -1,0 +1,66 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { ETooltip, ETooltipModule } from './';
+
+# Tooltip
+
+<Meta title="Core/Tooltip" decorators={[moduleMetadata({ imports: [ETooltipModule] })]} />
+
+<Props of={ETooltip} />
+
+<Preview>
+    <Story name="top" height="200px">
+        {{           
+            template: `
+                <e-tooltip [position]="position" [text]="text"></e-tooltip>
+            `,
+            props: {
+                position: 'top',
+                text: 'Общероссийский классификатор видов экономической деятельности'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="right" height="200px">
+        {{           
+            template: `
+                <e-tooltip [position]="position" [text]="text"></e-tooltip>
+            `,
+            props: {
+                position: 'right',
+                text: 'Общероссийский классификатор видов экономической деятельности'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="bottom" height="200px">
+        {{           
+            template: `
+                <e-tooltip [position]="position" [text]="text"></e-tooltip>
+            `,
+            props: {
+                position: 'bottom',
+                text: 'Общероссийский классификатор видов экономической деятельности'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="left" height="200px">
+        {{           
+            template: `
+                <e-tooltip [position]="position" [text]="text"></e-tooltip>
+            `,
+            props: {
+                position: 'left',
+                text: 'Общероссийский классификатор видов экономической деятельности'
+            }
+        }}
+    </Story>
+</Preview>

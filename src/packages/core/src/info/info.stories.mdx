@@ -1,0 +1,38 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EInfo, EInfoModule } from './';
+
+# Info
+
+<Meta title="Core/Info" decorators={[moduleMetadata({ imports: [EInfoModule] })]} />
+
+<Props of={EInfo} />
+
+<Preview>
+    <Story name="warning" height="100px">
+        {{
+            template: `
+                <e-info [appearance]="appearance">Для регистрации заявки требуется электронная подпись.</e-info>
+            `,
+            props: {
+                appearance: 'warning'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="error" height="120px">
+        {{
+            template: `
+                <e-info [appearance]="appearance" [fixedWidth]="fixedWidth">Внимание! После того, как вы нажмёте «Создать заявку», её нельзя будет отредактировать.</e-info>
+            `,
+            props: {
+                appearance: 'error',
+                fixedWidth: true
+            }
+        }}
+    </Story>
+</Preview>
+

@@ -1,0 +1,2 @@
+<div *ngIf="!contentPortal" [innerHTML]="content | eDataList : 'html'"></div>
+<ng-template *ngIf="contentPortal" [cdkPortalOutlet]="contentPortal"></ng-template>

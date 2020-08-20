@@ -1,0 +1,78 @@
+import { FormControl, Validators } from '@angular/forms';
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EUpload, EUploadModule } from './';
+
+# Upload
+
+<Meta title="Core/Upload" decorators={[moduleMetadata({ imports: [EUploadModule] })]} />
+
+<Props of={EUpload} />
+
+<Preview>
+    <Story name="default" height="240px">
+        {{
+            template: `
+                <e-upload
+                    [actionText]="actionText"
+                    [hint]="hint"
+                    [singleFileMaxSize]="singleFileMaxSize"
+                    [accept]="accept"
+                    [acceptError]="acceptError"
+                    [singleFileMaxSizeError]="singleFileMaxSizeError"
+                ></e-upload>
+            `,
+            props: {
+                actionText: 'Выберите файл или перетащите его сюда',
+                hint: 'PNG или JPEG. Максимум 5 Mb каждый. Не более 3 файлов.',
+                accept: '.png, image/jpeg',
+                acceptError: 'Расширение файла должно быть PNG или JPEG',
+                singleFileMaxSize: 1048576,
+                singleFileMaxSizeError: 'Файл превышает максимальный размер 1 MB'
+            }
+        }}
+    </Story>
+</Preview>
+
+
+<Preview>
+    <Story name="multiple" height="240px">
+        {{
+            template: `
+                <e-upload
+                    [actionText]="actionText"
+                    [singleFileMaxSize]="singleFileMaxSize"
+                    [singleFileMaxSizeError]="singleFileMaxSizeError"
+                    [multiple]="true"
+                    [appearance]="appearance"
+                    [error]="error"
+                ></e-upload>
+            `,
+            props: {
+                actionText: 'Выберите файлы или перетащите их сюда',
+                singleFileMaxSize: 1048576,
+                singleFileMaxSizeError: 'Файл превышает максимальный размер 1 MB',
+                appearance: 'error',
+                error: 'Для открытия счёта нам нужен скан вашего паспорта'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="disabled" height="120px">
+        {{
+            template: `
+                <e-upload
+                    [actionText]="actionText"
+                    [appearance]="appearance"
+                ></e-upload>
+            `,
+            props: {
+                actionText: 'Выберите файл или перетащите его сюда',
+                appearance: 'disabled'
+            }
+        }}
+    </Story>
+</Preview>

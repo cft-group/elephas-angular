@@ -1,0 +1,38 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EBanner, EBannerModule } from './';
+
+# Banner
+
+<Meta title="Core/Banner" decorators={[moduleMetadata({ imports: [EBannerModule] })]} />
+
+<Props of={EBanner} />
+
+<Preview>
+    <Story name="danger" height="80px">
+        {{
+            template: `<e-banner [appearance]="appearance">Critical error happened</e-banner>`,
+            props: {
+                appearance: 'danger'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="warning" height="80px">
+        {{
+            template: `<e-banner [appearance]="appearance" (onClick)="clickHandler">Critical error happened</e-banner>`,
+            props: {
+                appearance: 'warning'
+            },
+            methods: {
+                clickHandler: e => {
+                    e.preventDefault();
+                    console.log('close button click');
+                },
+            }
+        }}
+    </Story>
+</Preview>

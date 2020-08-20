@@ -1,0 +1,12 @@
+{
+  "version": "0.0.0",
+  "packages": [
+    "src/packages/*"
+  ],
+  "command": {
+    "version": {
+      "message": "chore: publish %s"
+    }
+  },
+  "changelogPreset": "angular"
+}

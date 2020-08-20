@@ -1,0 +1,42 @@
+import { FormControl, Validators } from '@angular/forms';
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { ESelect, ESelectModule } from './';
+
+# Select
+
+<Meta title="Core/Select" decorators={[moduleMetadata({ imports: [ESelectModule] })]} />
+
+<Props of={ESelect} />
+
+<Preview>
+    <Story name="default" height="120px">
+        {{
+            template: `
+                <e-select
+                    [label]="label"
+                    [width]="width"
+                    [options]="options">
+                </e-select>
+            `,
+            props: {
+                label: 'Models',
+                width: 4,
+                options: [{
+                    value: '',
+                    title: ''
+                    }, {
+                    value: '1',
+                    title: 'One'
+                    }, {
+                    value: '2',
+                    title: 'Two'
+                    }, {
+                    value: '3',
+                    title: 'Three'
+                }]
+            }
+        }}
+    </Story>
+</Preview>

@@ -1,0 +1,45 @@
+name: Release
+on: workflow_dispatch
+
+jobs:
+  publish:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
+      - name: Install dependencies
+        run: npm install
+      - name: Create .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
+      - name: Set git username
+        run: git config user.name "github-actions"
+      - name: Fetch tags
+        run: git fetch --prune --unshallow
+      - name: Release packages
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npm run release
+  deploy-storybook:
+    name: Deploy storybook
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Install dependencies
+      run: npm install
+    - name: Build storybook
+      run: npm run build-storybook    
+    - name: Deploy to gh-pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
+        CLEAN: true

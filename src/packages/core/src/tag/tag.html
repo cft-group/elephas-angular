@@ -1,0 +1,10 @@
+<div
+    [class]="className"
+    [ngClass]="{
+        '_e_tag': true,
+        '_e_tag_appearance_success': appearance === 'success',
+        '_e_tag_appearance_danger': appearance === 'danger',
+        '_e_tag_appearance_warning': appearance === 'warning'
+    }">
+    <ng-content></ng-content>
+</div>
