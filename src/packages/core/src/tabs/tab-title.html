@@ -1,0 +1,22 @@
+<div
+    *ngIf="!tab.routerLink"
+    class="_e_tabs__item"
+    [ngClass]="{
+        '_e_tabs__item_selected': tab.selected
+    }">
+    {{ tab.titleStr }}
+    <ng-container *ngTemplateOutlet="tab.titleTpl"></ng-container>
+</div>
+<div
+    *ngIf="tab.routerLink"
+    class="_e_tabs__item"
+    [ngClass]="{
+        '_e_tabs__item_selected': tab.selected
+    }"
+    [routerLink]="tab?.routerLink"
+    [routerLinkActive]="'_e_tabs__item'"
+    [queryParams]="tab?.queryParams"
+    role="link">
+    {{ tab.titleStr }}
+    <ng-container *ngTemplateOutlet="tab.titleTpl"></ng-container>
+</div>
