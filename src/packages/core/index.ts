@@ -14,6 +14,7 @@ export * from './src/radio/index';
 export * from './src/select/index';
 export * from './src/snackbar/index';
 export * from './src/spinner/index';
+export * from './src/tabs/index';
 export * from './src/tag/index';
 export * from './src/textarea/index';
 export * from './src/tooltip/index';

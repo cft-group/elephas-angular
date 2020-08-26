@@ -1,0 +1,58 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
+
+import { ETab, ETabs, ETabsModule } from './';
+import { EBadgeModule } from '../badge'
+import { EDemoModule } from './demo/demo.module';
+
+# Tabs
+
+<Meta
+    title="Core/Tabs"
+    decorators={[
+        moduleMetadata({
+            imports: [ ETabsModule, EBadgeModule, EDemoModule, RouterModule.forRoot([], { useHash: true }) ],
+            providers: [{ provide: APP_BASE_HREF, useValue : '/' }]
+        })
+    ]}
+/>
+
+<Props of={ETab} />
+<Props of={ETabs} />
+
+<Preview>
+    <Story name="default" height="100px">
+        {{
+            template: `
+                <e-tabs>
+                    <e-tab [title]="tab1">
+                        Tab 1 content
+                    </e-tab>
+                    <e-tab [title]="tab2">
+                        <ng-template #tab2>
+                            Tab 2
+                            <e-badge style="display: inline-flex; margin-left: 8px;">2</e-badge>
+                        </ng-template>
+                        Tab 2 content
+                    </e-tab>
+                </e-tabs>
+            `,
+            props: {
+                tab1: 'Tab 1',
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="withRouting" height="130px">
+        {{
+            template: `
+                <e-demo></e-demo>
+            `,
+        }}
+    </Story>
+</Preview>
+

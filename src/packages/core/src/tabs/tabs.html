@@ -1,0 +1,10 @@
+<nav
+    [class]="className"
+    [ngClass]="{
+        '_e_tabs': true
+    }">
+    <ng-container *ngFor="let t of tabs">
+        <div eTabTitle [tab]="t" (click)="onSelectTab(t)"></div>
+    </ng-container>
+</nav>
+<ng-content select="e-tab"></ng-content>
