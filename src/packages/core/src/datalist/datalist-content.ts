@@ -1,10 +1,11 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ComponentPortal} from '@angular/cdk/portal';
 
 @Component({
     selector: 'e-datalist-content',
     templateUrl: './datalist-content.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EDatalistContent implements OnInit {
 

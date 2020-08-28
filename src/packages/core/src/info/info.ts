@@ -1,8 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
     selector: 'e-info',
-    templateUrl: './info.html'
+    templateUrl: './info.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EInfo {
 

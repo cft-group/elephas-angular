@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 import {ESelect} from '../select';
 import {Option} from '../models';
@@ -26,6 +27,8 @@ describe('ESelect', (): void => {
 
     beforeEach(async((): void => {
         TestBed.configureTestingModule({
+            imports: [ CommonModule ],
+            schemas: [ NO_ERRORS_SCHEMA ],
             declarations: [ ESelect ]
         })
             .compileComponents();
@@ -34,10 +37,10 @@ describe('ESelect', (): void => {
     beforeEach((): void => {
         fixture = TestBed.createComponent(ESelect);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', (): void => {
+        fixture.detectChanges();
         expect(component).toBeTruthy();
     });
 

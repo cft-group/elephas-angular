@@ -1,10 +1,11 @@
-import {Component, OnInit, OnChanges, SimpleChanges, OnDestroy, Input, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {EBaseInput} from '../base-input/base-input';
 
 @Component({
     selector: 'e-textarea',
     templateUrl: './textarea.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ETextarea extends EBaseInput implements OnChanges, OnInit, OnDestroy {
 

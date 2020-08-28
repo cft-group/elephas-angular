@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
     selector: 'e-chip',
-    templateUrl: './chip.html'
+    templateUrl: './chip.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EChip {
 

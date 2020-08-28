@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter, forwardRef, ViewEncapsulation, SimpleChanges, OnChanges } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
+import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop: any = (): void => {};
 let nextUniqueId: number = 0;
@@ -15,7 +15,8 @@ export const RADIO_VALUE_ACCESSOR: any = {
     selector: 'e-radio',
     templateUrl: './radio.html',
     providers: [RADIO_VALUE_ACCESSOR],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ERadio implements ControlValueAccessor, OnChanges {
 

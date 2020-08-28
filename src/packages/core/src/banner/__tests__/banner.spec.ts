@@ -1,7 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {By} from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
 
-import { EBanner } from '../banner';
+import {EBanner} from '../banner';
 
 describe('EBanner', (): void => {
     let component: EBanner;
@@ -9,6 +11,8 @@ describe('EBanner', (): void => {
 
     beforeEach(async((): void => {
         TestBed.configureTestingModule({
+            imports: [ CommonModule ],
+            schemas: [ NO_ERRORS_SCHEMA ],
             declarations: [ EBanner ]
         })
             .compileComponents();
@@ -17,10 +21,10 @@ describe('EBanner', (): void => {
     beforeEach((): void => {
         fixture = TestBed.createComponent(EBanner);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', (): void => {
+        fixture.detectChanges();
         expect(component).toBeTruthy();
     });
 
