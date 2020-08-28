@@ -1,5 +1,5 @@
-import {Component, OnInit, OnDestroy, ViewEncapsulation, Input, Output, EventEmitter, ChangeDetectorRef} from '@angular/core';
-import {Subscription, timer, Observable} from 'rxjs';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Observable, Subscription, timer} from 'rxjs';
 import {SnackbarConfig} from './models';
 
 const interval: number = 1000;
@@ -8,7 +8,8 @@ const defaultDuration: number = 10;
 @Component({
     selector: 'e-snackbar',
     templateUrl: './snackbar.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ESnackbar implements OnInit, OnDestroy {
 

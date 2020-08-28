@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {By} from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
 
-import { ESnackbar } from '../snackbar';
-import { SnackbarConfig } from '../models';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import {ESnackbar} from '../snackbar';
+import {SnackbarConfig} from '../models';
 
 describe('ESnackbar', (): void => {
     let component: ESnackbar;
@@ -12,6 +13,8 @@ describe('ESnackbar', (): void => {
 
     beforeEach(async((): void => {
         TestBed.configureTestingModule({
+            imports: [ CommonModule ],
+            schemas: [ NO_ERRORS_SCHEMA ],
             declarations: [ ESnackbar ]
         })
             .compileComponents();
@@ -20,10 +23,10 @@ describe('ESnackbar', (): void => {
     beforeEach((): void => {
         fixture = TestBed.createComponent(ESnackbar);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', (): void => {
+        fixture.detectChanges();
         expect(component).toBeTruthy();
     });
 

@@ -1,8 +1,10 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
     selector: 'e-action',
-    templateUrl: './action.html'
+    templateUrl: './action.html',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EAction {
 

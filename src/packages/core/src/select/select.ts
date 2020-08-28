@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation, Input, forwardRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input, ViewEncapsulation} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {EBaseInput} from '../base-input/base-input';
 import {Option} from './models';
@@ -16,7 +16,8 @@ export const SELECT_VALUE_ACCESSOR: any = {
     selector: 'e-select',
     templateUrl: './select.html',
     providers: [SELECT_VALUE_ACCESSOR],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ESelect extends EBaseInput {
 

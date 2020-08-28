@@ -1,10 +1,11 @@
-import {Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, OnDestroy, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {EBaseInput} from '../base-input/base-input';
 
 @Component({
     selector: 'e-input',
     templateUrl: './input.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EInput extends EBaseInput implements OnChanges, OnInit, OnDestroy {
 
