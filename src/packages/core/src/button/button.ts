@@ -16,7 +16,7 @@ export class EButton {
     /**
      * Button disabled state.
      */
-    @Input() public disabled: boolean;
+    @Input() public disabled: boolean = false;
 
     @HostBinding('class._e_button_appearance_primary') public get primaryButton(): boolean {
         return this.appearance === 'primary';
