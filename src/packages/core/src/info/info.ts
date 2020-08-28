@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'e-info',
     templateUrl: './info.html'
 })
-export class EInfo implements OnInit {
+export class EInfo {
 
     /**
      * Visual appearance.
@@ -18,8 +18,5 @@ export class EInfo implements OnInit {
      * Fixed width flag.
      */
     @Input() public fixedWidth: boolean = false;
-
-    public ngOnInit(): void {
-    }
 
 }
