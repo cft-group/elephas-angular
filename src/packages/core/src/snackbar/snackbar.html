@@ -1,5 +1,7 @@
 <div
     [class]="config?.className"
+    [@fade]="animationState"
+    (@fade.done)="onAnimationEnd()"
     [ngClass]="{
         '_e_snackbar': true
     }">

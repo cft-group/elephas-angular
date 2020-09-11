@@ -1,5 +1,6 @@
-import {Injectable, ComponentRef, ComponentFactoryResolver, Injector, Inject, ComponentFactory, RendererFactory2, Renderer2} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import {Injectable, ComponentRef} from '@angular/core';
+import {Overlay, OverlayRef} from '@angular/cdk/overlay';
+import {ComponentPortal} from '@angular/cdk/portal';
 import {Subscription, Subject, Observable} from 'rxjs';
 import {ESnackbar} from './snackbar';
 import {SnackbarConfig} from './models';
@@ -7,36 +8,28 @@ import {SnackbarConfig} from './models';
 @Injectable()
 export class ESnackbarService {
 
-    private componentRef: ComponentRef<ESnackbar>;
+    private snackbarRef: ComponentRef<ESnackbar>;
     private close: Subject<void> = new Subject<void>();
-    private readonly renderer: Renderer2;
 
-    constructor(
-        private componentFactoryResolver: ComponentFactoryResolver,
-        private injector: Injector,
-        private rendererFactory: RendererFactory2,
-        @Inject(DOCUMENT) private document: Document
-    ) {
-        this.renderer = this.rendererFactory.createRenderer(null, null);
+    constructor(private overlay: Overlay) {
     }
 
     public open(config: SnackbarConfig): void {
-        if (!this.componentRef) {
-            const factory: ComponentFactory<ESnackbar> = this.componentFactoryResolver.resolveComponentFactory(ESnackbar);
-            this.componentRef = factory.create(this.injector);
+        if (!this.snackbarRef) {
+            const overlayRef: OverlayRef = this.overlay.create({
+                positionStrategy: this.overlay.position().global().centerHorizontally().centerHorizontally()
+            });
 
-            this.componentRef.instance.config = config;
-            this.componentRef.hostView.detectChanges();
+            const containerPortal: ComponentPortal<ESnackbar> =  new ComponentPortal(ESnackbar);
 
-            const nativeElement: HTMLElement = this.componentRef.location.nativeElement;
+            this.snackbarRef = overlayRef.attach(containerPortal);
+            this.snackbarRef.instance.config = config;
 
-            this.renderer.appendChild(this.document.body, nativeElement);
-
-            const subs: Subscription = this.componentRef.instance.close.subscribe((isManuallyClosed: boolean): void => {
-                this.componentRef.destroy();
-                this.componentRef = null;
-                this.renderer.removeChild(this.document.body, nativeElement);
-                if (isManuallyClosed) {
+            const subs: Subscription = this.snackbarRef.instance.close.subscribe((manuallyClosed: boolean): void => {
+                overlayRef.detach();
+                this.snackbarRef.destroy();
+                this.snackbarRef = null;
+                if (manuallyClosed) {
                     this.close.next();
                 }
                 subs.unsubscribe();

@@ -1,21 +1,25 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {OverlayModule} from '@angular/cdk/overlay';
 
-import { ESnackbarService } from '../snackbar.service';
-import { ESnackbar } from '../snackbar';
-import { ESnackbarDemo } from './demo';
-import { EButtonModule } from '../../button';
+import {ESnackbarService} from '../snackbar.service';
+import {ESnackbarDemo} from './demo';
+import {EButtonModule} from '../../button';
+import {ESnackbarModule} from '../snackbar.module';
 
 @NgModule({
-    declarations: [ESnackbarDemo, ESnackbar],
-    entryComponents: [ESnackbar],
+    declarations: [ESnackbarDemo],
     imports: [
         CommonModule,
         BrowserModule,
-        EButtonModule
+        BrowserAnimationsModule,
+        EButtonModule,
+        OverlayModule,
+        ESnackbarModule
     ],
     providers: [ESnackbarService],
-    exports: [ESnackbarDemo, ESnackbar]
+    exports: [ESnackbarDemo]
 })
 export class ESnackbarDemoModule { }

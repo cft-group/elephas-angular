@@ -1,4 +1,6 @@
-import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
+import {TestBed, ComponentFixture, fakeAsync, waitForAsync} from '@angular/core/testing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {OverlayModule} from '@angular/cdk/overlay';
 import {ESnackbarService} from '../snackbar.service';
 import {SnackbarConfig} from '../models';
 import {ESnackbar} from '../snackbar';
@@ -9,19 +11,18 @@ describe('Service: ESnackbar', (): void => {
     let fixture: ComponentFixture<ESnackbar>;
     const snackbarConfig: SnackbarConfig = { text: 'Action completed...', buttonText: 'Cancel' };
 
-    beforeEach((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
+            imports: [OverlayModule, BrowserAnimationsModule],
             providers: [ESnackbarService],
             declarations: [ESnackbar]
         }).compileComponents();
-    });
 
-    beforeEach((): void => {
         snackbarService = TestBed.inject(ESnackbarService);
         fixture = TestBed.createComponent(ESnackbar);
         component = fixture.componentInstance;
         fixture.detectChanges();
-    });
+    }));
 
     it('should create', (): void => {
         expect(snackbarService).toBeTruthy();

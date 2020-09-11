@@ -1,6 +1,7 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 
 import {ESnackbar} from '../snackbar';
@@ -11,22 +12,20 @@ describe('ESnackbar', (): void => {
     let fixture: ComponentFixture<ESnackbar>;
     const snackbarConfig: SnackbarConfig = { text: 'Action completed...', buttonText: 'Cancel' };
 
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
-            imports: [ CommonModule ],
+            imports: [ CommonModule, BrowserAnimationsModule ],
             schemas: [ NO_ERRORS_SCHEMA ],
             declarations: [ ESnackbar ]
         })
             .compileComponents();
-    }));
 
-    beforeEach((): void => {
         fixture = TestBed.createComponent(ESnackbar);
         component = fixture.componentInstance;
-    });
+        fixture.detectChanges();
+    }));
 
     it('should create', (): void => {
-        fixture.detectChanges();
         expect(component).toBeTruthy();
     });
 
