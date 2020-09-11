@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Observable, Subscription, timer} from 'rxjs';
+import {SnackbarAnimation} from './snackbar.animation';
 import {SnackbarConfig} from './models';
 
 const interval: number = 1000;
@@ -8,6 +9,7 @@ const defaultDuration: number = 10;
 @Component({
     selector: 'e-snackbar',
     templateUrl: './snackbar.html',
+    animations: [SnackbarAnimation.fadeSnackbar],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -22,7 +24,9 @@ export class ESnackbar implements OnInit, OnDestroy {
     /**
      * @internal
      */
+    public animationState: 'fadeIn' | 'fadeOut' = 'fadeOut';
 
+    private manuallyClosed: boolean = false;
     private subs: Subscription;
 
     constructor(private cdr: ChangeDetectorRef) { }
@@ -30,6 +34,7 @@ export class ESnackbar implements OnInit, OnDestroy {
     public ngOnInit(): void {
         if (this.config) {
             this.count = this.config.duration || defaultDuration;
+            this.animationState = 'fadeIn';
             this.initTimer();
         }
     }
@@ -44,7 +49,17 @@ export class ESnackbar implements OnInit, OnDestroy {
      * @internal
      */
     public onClose(): void {
-        this.close.emit(true);
+        this.animationState = 'fadeOut';
+        this.manuallyClosed = true;
+    }
+
+    /**
+     * @internal
+     */
+    public onAnimationEnd(): void {
+        if (this.animationState === 'fadeOut') {
+            this.close.emit(this.manuallyClosed);
+        }
     }
 
     /**
@@ -55,10 +70,10 @@ export class ESnackbar implements OnInit, OnDestroy {
         this.subs = timerSource.subscribe((): void => {
             if (this.count) {
                 this.count--;
-                this.cdr.detectChanges();
             } else {
-                this.close.emit(false);
+                this.animationState = 'fadeOut';
             }
+            this.cdr.markForCheck();
         });
     }
 
