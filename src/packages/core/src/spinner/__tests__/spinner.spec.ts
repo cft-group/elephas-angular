@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ESpinner } from '../spinner';
 
@@ -6,7 +6,7 @@ describe('ESpinner', (): void => {
     let component: ESpinner;
     let fixture: ComponentFixture<ESpinner>;
 
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
             declarations: [ ESpinner ]
         })

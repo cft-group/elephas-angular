@@ -1,4 +1,3 @@
-import { TestBed, async } from '@angular/core/testing';
 import { EUploadTruncateExt } from '../upload-truncate-ext';
 
 describe('Pipe: EUploadTruncateExt', (): void => {

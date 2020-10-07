@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
@@ -25,7 +25,7 @@ describe('ESelect', (): void => {
         }
     ];
 
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
             imports: [ CommonModule ],
             schemas: [ NO_ERRORS_SCHEMA ],

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EUpload } from '../upload';
 
@@ -6,7 +6,7 @@ describe('EUpload', (): void => {
     let component: EUpload;
     let fixture: ComponentFixture<EUpload>;
 
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
             declarations: [ EUpload ]
         })

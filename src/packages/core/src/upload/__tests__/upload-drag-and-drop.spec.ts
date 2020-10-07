@@ -1,4 +1,3 @@
-import { TestBed, async } from '@angular/core/testing';
 import { EUploadDragAndDrop } from '../upload-drag-and-drop';
 
 describe('Directive: EUpload', (): void => {
