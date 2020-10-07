@@ -1,12 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EDatalistItem } from './datalist-item';
+import { EDatalistItem } from '../datalist-item';
 
 describe('EDatalistItem', (): void => {
     let component: EDatalistItem;
     let fixture: ComponentFixture<EDatalistItem>;
 
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
             declarations: [ EDatalistItem ]
         })

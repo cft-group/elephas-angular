@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
@@ -9,7 +9,7 @@ describe('EBanner', (): void => {
     let component: EBanner;
     let fixture: ComponentFixture<EBanner>;
 
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
             imports: [ CommonModule ],
             schemas: [ NO_ERRORS_SCHEMA ],

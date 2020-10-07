@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ETag } from '../tag';
 
@@ -6,7 +6,7 @@ describe('ETag', (): void => {
     let component: ETag;
     let fixture: ComponentFixture<ETag>;
 
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
             declarations: [ ETag ]
         })

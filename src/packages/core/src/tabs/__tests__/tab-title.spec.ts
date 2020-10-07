@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationExtras, Router, Routes } from '@angular/router';
 
@@ -16,7 +16,7 @@ describe('ETabTitle', (): void => {
         }
     ];
 
-    beforeEach(async((): void => {
+    beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule.withRoutes(routes) ],
             declarations: [ ETabTitle ]
