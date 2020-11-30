@@ -17,9 +17,9 @@
     "e2e": "ng e2e",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d . --disablePrivate --disableLifeCycleHooks --disableInternal",
     "storybook": "npm run docs:json && npm run storybook:docs",
-    "storybook:docs": "start-storybook --docs -p 9008 -s ./static",
+    "storybook:docs": "start-storybook --docs -p 9008",
     "build-storybook": "npm run docs:json && npm run build-storybook:build",
-    "build-storybook:build": "build-storybook -c .storybook -o build --docs -s ./static",
+    "build-storybook:build": "build-storybook -c .storybook -o build --docs",
     "lerna:version": "lerna version --exact --force-publish --conventional-commits --create-release github --yes",
     "lerna:publish": "lerna publish from-package --contents dist --yes",
     "release": "npm install && npm run lerna:version && npm run lerna:publish"
