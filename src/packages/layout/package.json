@@ -20,6 +20,10 @@
   },
   "scripts": {
     "build": "export PACKAGE_NAME=`basename $INIT_CWD` && ng build --prod $PACKAGE_NAME",
-    "prepublishOnly": "npm run build"
+    "downlevelDts": "cd dist && npx downlevel-dts . ts3.4 [--to=3.4]",
+    "prepublishOnly": "npm run build && npm run downlevelDts"
+  },
+  "typesVersions": {
+    "<3.9": { "*": ["ts3.4/*"] }
   }
 }
