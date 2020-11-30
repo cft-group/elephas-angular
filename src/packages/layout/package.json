@@ -5,9 +5,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "dependencies": {
-    "@elephas/angular-core": "1.0.0-alpha.3"
+    "@elephas/angular-core": "1.0.0-alpha.4"
   },
   "peerDependencies": {
     "@angular/common": "^10.0.5",
@@ -24,6 +24,10 @@
     "prepublishOnly": "npm run build && npm run downlevelDts"
   },
   "typesVersions": {
-    "<3.9": { "*": ["ts3.4/*"] }
+    "<3.9": {
+      "*": [
+        "ts3.4/*"
+      ]
+    }
   }
 }

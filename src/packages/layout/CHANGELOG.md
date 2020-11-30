@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/cft-group/elephas-angular/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2020-11-30)
+
+
+### Bug Fixes
+
+* checkbox and radio components ([b205e29](https://github.com/cft-group/elephas-angular/commit/b205e2916d0b34a811412a9406bb06e228c2e8d2))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/cft-group/elephas-angular/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2020-08-31)
 
 
