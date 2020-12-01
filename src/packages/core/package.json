@@ -17,12 +17,14 @@
     "mime": "^2.4.6"
   },
   "scripts": {
-    "build": "export PACKAGE_NAME=`basename $INIT_CWD` && ng build --prod $PACKAGE_NAME",
-    "downlevelDts": "cd dist && npx downlevel-dts . ts3.4 [--to=3.4]",
-    "prepublishOnly": "npm run build && npm run downlevelDts"
+    "build": "ng build --prod $PACKAGE_NAME",
+    "legacy:dts": "cd dist && npx downlevel-dts . ts3.4 [--to=3.4]",
+    "legacy:metadata": "cd dist && cp elephas-angular-${PACKAGE_NAME}.metadata.json ts3.4",
+    "legacy:package": "echo { \\\"metadata\\\": \\\"elephas-angular-${PACKAGE_NAME}.metadata.json\\\" } > dist/ts3.4/package.json",
+    "prepublishOnly": "export PACKAGE_NAME=`basename $INIT_CWD` && npm run build && npm run legacy:dts && npm run legacy:metadata && npm run legacy:package"
   },
   "typesVersions": {
-    "<3.9": {
+    "<3.8": {
       "*": [
         "ts3.4/*"
       ]
