@@ -19,11 +19,11 @@
     "@elephas/layout": "^1.0.0"
   },
   "scripts": {
-    "build": "ng build --prod $PACKAGE_NAME",
+    "build": "export PACKAGE_NAME=`basename $INIT_CWD` && ng build --prod $PACKAGE_NAME",
     "legacy:dts": "cd dist && npx downlevel-dts . ts3.4 [--to=3.4]",
-    "legacy:metadata": "cd dist && cp elephas-angular-${PACKAGE_NAME}.metadata.json ts3.4",
-    "legacy:package": "echo { \\\"metadata\\\": \\\"elephas-angular-${PACKAGE_NAME}.metadata.json\\\" } > dist/ts3.4/package.json",
-    "prepublishOnly": "export PACKAGE_NAME=`basename $INIT_CWD` && npm run build && npm run legacy:dts && npm run legacy:metadata && npm run legacy:package"
+    "legacy:metadata": "export PACKAGE_NAME=`basename $INIT_CWD` && cd dist && cp elephas-angular-${PACKAGE_NAME}.metadata.json ts3.4",
+    "legacy:package": "export PACKAGE_NAME=`basename $INIT_CWD` && echo { \\\"metadata\\\": \\\"elephas-angular-${PACKAGE_NAME}.metadata.json\\\" } > dist/ts3.4/package.json",
+    "prepublishOnly": "npm run build && npm run legacy:dts && npm run legacy:metadata && npm run legacy:package"
   },
   "typesVersions": {
     "<3.8": {
