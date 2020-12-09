@@ -55,11 +55,12 @@ import { ETooltip, ETooltipModule } from './';
     <Story name="left" height="200px">
         {{           
             template: `
-                <e-tooltip [position]="position" [text]="text"></e-tooltip>
+                <e-tooltip [position]="position" [className]="className" [text]="text"></e-tooltip>
             `,
             props: {
                 position: 'left',
-                text: 'Общероссийский классификатор видов экономической деятельности'
+                text: 'Общероссийский классификатор видов экономической деятельности',
+                className: 'some-class'
             }
         }}
     </Story>
