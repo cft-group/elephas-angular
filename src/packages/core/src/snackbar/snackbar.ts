@@ -5,11 +5,12 @@ import {SnackbarConfig} from './models';
 
 const interval: number = 1000;
 const defaultDuration: number = 10;
+const countPadding: number = 2;
 
 @Component({
     selector: 'e-snackbar',
     templateUrl: './snackbar.html',
-    animations: [SnackbarAnimation.fadeSnackbar],
+    animations: [SnackbarAnimation.hideSnackbar],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -24,7 +25,11 @@ export class ESnackbar implements OnInit, OnDestroy {
     /**
      * @internal
      */
-    public animationState: 'fadeIn' | 'fadeOut' = 'fadeOut';
+    public paddedCount: string;
+    /**
+     * @internal
+     */
+    public animationState: 'visible' | 'hidden' = 'hidden';
 
     private manuallyClosed: boolean = false;
     private subs: Subscription;
@@ -34,7 +39,8 @@ export class ESnackbar implements OnInit, OnDestroy {
     public ngOnInit(): void {
         if (this.config) {
             this.count = this.config.duration || defaultDuration;
-            this.animationState = 'fadeIn';
+            this.paddedCount = this.count.toString().padStart(countPadding, '0');
+            this.animationState = 'visible';
             this.initTimer();
         }
     }
@@ -49,7 +55,7 @@ export class ESnackbar implements OnInit, OnDestroy {
      * @internal
      */
     public onClose(): void {
-        this.animationState = 'fadeOut';
+        this.animationState = 'hidden';
         this.manuallyClosed = true;
     }
 
@@ -57,7 +63,7 @@ export class ESnackbar implements OnInit, OnDestroy {
      * @internal
      */
     public onAnimationEnd(): void {
-        if (this.animationState === 'fadeOut') {
+        if (this.animationState === 'hidden') {
             this.close.emit(this.manuallyClosed);
         }
     }
@@ -70,8 +76,9 @@ export class ESnackbar implements OnInit, OnDestroy {
         this.subs = timerSource.subscribe((): void => {
             if (this.count) {
                 this.count--;
+                this.paddedCount = this.count.toString().padStart(countPadding, '0');
             } else {
-                this.animationState = 'fadeOut';
+                this.animationState = 'hidden';
             }
             this.cdr.markForCheck();
         });

@@ -11,7 +11,7 @@ export class ESnackbarDemo {
     constructor(private snackbarService: ESnackbarService) { }
 
     public onClick(): void {
-        this.snackbarService.open({ text: 'Action completed...', buttonText: 'Отменить' });
+        this.snackbarService.open({ text: 'Action completed.', buttonText: 'Cancel' });
     }
 
 }

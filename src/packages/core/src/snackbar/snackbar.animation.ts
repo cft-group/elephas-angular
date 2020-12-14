@@ -1,19 +1,19 @@
 import {AnimationTriggerMetadata, trigger, state, transition, style, animate} from '@angular/animations';
 
-const animationTiming: number = 100;
+const animationTiming: string = '200ms ease-out';
 
 export const SnackbarAnimation: {
-    readonly fadeSnackbar: AnimationTriggerMetadata;
+    readonly hideSnackbar: AnimationTriggerMetadata;
 } = {
-    fadeSnackbar: trigger('fade', [
-            state('fadeOut', style({ opacity: 0 })),
-            state('fadeIn', style({ opacity: 1 })),
-            transition('* => fadeIn', [
-                style({ transform: 'scale3d(.3, .3, .3)', opacity: 1 }),
-                animate(animationTiming)
-            ]),
-            transition('fadeIn => fadeOut', [
-                animate(animationTiming, style({ transform: 'scale3d(.3, .3, .3)', opacity: 0 }))
-            ])
+    hideSnackbar: trigger('fade', [
+        state('hidden', style({ bottom: '-64px' })),
+        state('visible', style({ bottom: '16px' })),
+        transition('* => visible', [
+            style({ bottom: '-64px' }),
+            animate(animationTiming)
+        ]),
+        transition('visible => hidden', [
+            animate(animationTiming, style({ bottom: '-64px' }))
         ])
+    ])
 };

@@ -5,6 +5,6 @@
     [ngClass]="{
         '_e_snackbar': true
     }">
-    <div class="_e_snackbar__text">{{ config?.text }} <span class="_e_snackbar__timer">:{{ count }}</span></div>
-    <button eButton class="_e_snackbar__button" (click)="onClose()">{{ config?.buttonText }}</button>
+    <div class="_e_snackbar__text">{{ config?.text }}</div>
+    <button eButton class="_e_snackbar__button" (click)="onClose()">{{ config?.buttonText }} :{{ paddedCount }}</button>
 </div>
