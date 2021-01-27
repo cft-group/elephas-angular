@@ -1,0 +1,34 @@
+<div
+    [class]="className"
+    [class._e_input]="true"
+    [class._e_input_focused]="focused | async"
+    [class._e_dropdown]="isDropdown"
+    [class._e_select]="isSelect"
+    [class._e_input_appearance_disabled]="disabled"
+    [class._e_input_appearance_readonly]="readonly"
+    [class._e_input_appearance_error]="hasError"
+    [ngClass]="getInputSize()">
+    <label class="_e_input__field">
+        <ng-content select="input[eInput],textarea[eTextarea],select[eSelect]"></ng-content>
+        <span class="_e_input__label">{{ label }}</span>
+        <span class="_e_input__line"></span>
+        <span class="_e_input__background"></span>
+        <span
+            class="_e_input__icon"
+            [ngClass]="{
+                '_e_input__icon_passive': isSelect
+            }">
+            <ng-content select="svg"></ng-content>
+            <span
+                *ngIf="isSelect || isDropdown"
+                class="_e_select__arrow">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path id="icon/navigation/arrow_drop_down_24px" d="M8.33031 11.8617L11.2159 14.6815C11.6504 15.1062 12.3523 15.1062 12.7868 14.6815L15.6724 11.8617C16.3743 11.1758 15.873 10 14.8814 10H9.11021C8.11863 10 7.62841 11.1758 8.33031 11.8617Z"></path>
+                </svg>
+            </span>
+        </span>
+        <ng-content select="e-dropdown"></ng-content>
+    </label>
+    <span  *ngIf="hint && !hasError"  class="_e_input__hint">{{ hint }}</span>
+    <span *ngIf="hasError && error" class="_e_input__hint">{{ error }}</span>
+</div>

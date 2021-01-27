@@ -4,7 +4,7 @@ import {DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl}
 @Pipe({
     name: 'eDataList'
 })
-export class EDataListPipe implements PipeTransform {
+export class EDataListSanitizer implements PipeTransform {
 
     constructor(protected sanitizer: DomSanitizer) {}
 

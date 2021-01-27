@@ -1,31 +1,32 @@
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { EInput, EInputModule } from './';
+import { EBaseInput } from '../base-input/base-input';
 
 # Input
 
-<Meta title="Core/Input" decorators={[moduleMetadata({ imports: [EInputModule] })]} />
+<Meta title="Core/Input" decorators={[moduleMetadata({ imports: [FormsModule, ReactiveFormsModule, EInputModule] })]} />
 
 <Props of={EInput} />
+<Props of={EBaseInput} />
 
 <Preview>
     <Story name="default" height="120px">
         {{
             template: `
-                <e-input
-                    [width]="width"
+                <e-base-input
                     [label]="label"
-                    [value]="value"
-                    [hint]="hint">
-                </e-input>
+                    [hint]="hint"
+                    [width]="width">
+                    <input eInput>
+                </e-base-input>
             `,
             props: {
                 width: 12,
                 label: 'Где выдан паспорт',
-                value: 'ОВД г. Новосибирска по Советскому р-ну, код 540-016',
-                hint: 'Заполнять так же, как написано в паспорте',
+                hint: 'Заполнять так же, как написано в паспорте'
             }
         }}
     </Story>
@@ -35,12 +36,11 @@ import { EInput, EInputModule } from './';
     <Story name="readonly" height="120px">
         {{
             template: `
-                <e-input
+                <e-base-input
                     [width]="width"
-                    [label]="label"
-                    [value]="value"
-                    [appearance]="appearance">
-                </e-input>
+                    [label]="label">
+                    <input eInput [value]="value" readonly="true" [readonly]="appearance">
+                </e-base-input>
             `,
             props: {
                 label: 'Способ перевода',
@@ -56,13 +56,12 @@ import { EInput, EInputModule } from './';
     <Story name="disabled" height="120px">
         {{
             template: `
-                <e-input
+                <e-base-input
                     [width]="width"
                     [label]="label"
-                    [value]="value"
-                    [hint]="hint"
-                    [appearance]="appearance">
-                </e-input>
+                    [hint]="hint">
+                    <input eInput [value]="value" disabled="true" [disabled]="appearance">
+                </e-base-input>
             `,
             props: {
                 label: 'Номер обращения',
@@ -79,15 +78,36 @@ import { EInput, EInputModule } from './';
     <Story name="validation" height="120px">
         {{
             template: `
-                <e-input
+                <e-base-input
                     [width]="width"
                     [label]="label"
-                    [value]="value"
                     [hint]="hint"
-                    [appearance]="appearance"
-                    [control]="control"
                     [error]="error">
-                </e-input>
+                    <input eInput [type]="type" [formControl]="control">
+                </e-base-input>
+            `,
+            props: {
+                label: 'Адрес электронной почты',
+                width: 8,
+                type: 'email',
+                error: 'Неправильный почтовый адрес',
+                control: new FormControl('', [ Validators.email ])
+            },
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="validationDisabled" height="120px">
+        {{
+            template: `
+                <e-base-input
+                    [width]="width"
+                    [label]="label"
+                    [hint]="hint"
+                    [error]="error">
+                    <input eInput [type]="type" [formControl]="control" [disabledControl]="true">
+                </e-base-input>
             `,
             props: {
                 label: 'Адрес электронной почты',

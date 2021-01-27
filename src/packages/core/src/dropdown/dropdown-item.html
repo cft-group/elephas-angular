@@ -1,0 +1,9 @@
+<div
+    class="_e_dropdown__item"
+    [ngClass]="{
+        '_e_dropdown__item_active': active,
+        '_e_dropdown__item_selected': selected
+    }"
+    (click)="onSetItemActive()">
+    <ng-content></ng-content>
+</div>
