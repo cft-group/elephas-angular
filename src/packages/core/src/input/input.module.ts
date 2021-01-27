@@ -1,15 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {EBaseInputModule} from '../base-input';
 import {EInput} from './input';
 
 @NgModule({
     declarations: [EInput],
     imports: [
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule
+        EBaseInputModule
     ],
-    exports: [EInput]
+    exports: [EInput, EBaseInputModule]
 })
 export class EInputModule { }

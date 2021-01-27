@@ -1,24 +1,26 @@
-import { FormControl, Validators } from '@angular/forms';
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
-import { ESelect, ESelectModule } from './';
+import { ESelectModule } from './';
+import { EBaseInput } from '../base-input/base-input';
 
 # Select
 
 <Meta title="Core/Select" decorators={[moduleMetadata({ imports: [ESelectModule] })]} />
 
-<Props of={ESelect} />
+<Props of={EBaseInput} />
 
 <Preview>
     <Story name="default" height="120px">
         {{
             template: `
-                <e-select
+                <e-base-input
                     [label]="label"
-                    [width]="width"
-                    [options]="options">
-                </e-select>
+                    [width]="width">
+                    <select eSelect>
+                        <option *ngFor="let option of options" [value]="option.value">{{ option.title }}</option>
+                    </select>
+                </e-base-input>
             `,
             props: {
                 label: 'Models',

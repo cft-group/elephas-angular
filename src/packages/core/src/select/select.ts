@@ -1,60 +1,33 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input, ViewEncapsulation} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {EBaseInput} from '../base-input/base-input';
-import {Option} from './models';
+import {Directive, ElementRef, OnChanges, OnDestroy, OnInit, Optional, Self} from '@angular/core';
+import {NgControl} from '@angular/forms';
+import {EBaseControl, EBaseControlRef} from '../base-input';
 
-const noop: any = (): void => {};
-
-export const SELECT_VALUE_ACCESSOR: any = {
-    provide: NG_VALUE_ACCESSOR,
-    // tslint:disable-next-line:no-use-before-declare
-    useExisting: forwardRef((): any => ESelect),
-    multi: true
-};
-
-@Component({
-    selector: 'e-select',
-    templateUrl: './select.html',
-    providers: [SELECT_VALUE_ACCESSOR],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+@Directive({
+    selector: 'select[eSelect]',
+    providers: [{ provide: EBaseControl, useExisting: ESelect }]
 })
-export class ESelect extends EBaseInput {
-
-    /**
-     * Select options.
-     */
-    @Input() public options: Option[];
+export class ESelect extends EBaseControlRef implements EBaseControl, OnChanges, OnInit, OnDestroy {
 
     /**
      * @internal
      */
-    public value: string;
+    public isSelect: boolean;
 
-    private onTouchedCallback: () => void = noop;
-    private onChangeCallback: (_: any) => void = noop;
-
-    /**
-     * @internal
-     */
-    public writeValue(value: any): void {
-        if (value !== this.value) {
-            this.value = value;
-        }
+    constructor(private elementRef: ElementRef<HTMLSelectElement>, @Optional() @Self() private ngCtrl: NgControl) {
+        super(ngCtrl);
     }
 
-    /**
-     * @internal
-     */
-    public registerOnChange(fn: any): void {
-        this.onChangeCallback = fn;
+    public ngOnChanges(): void {
+        this.stateChanges.next();
     }
 
-    /**
-     * @internal
-     */
-    public registerOnTouched(fn: any): void {
-        this.onTouchedCallback = fn;
+    public ngOnInit(): void {
+        const element: HTMLSelectElement = this.elementRef.nativeElement;
+        this.isSelect = element.nodeName.toLocaleLowerCase() === 'select';
+    }
+
+    public ngOnDestroy(): void {
+        this.stateChanges.complete();
     }
 
 }

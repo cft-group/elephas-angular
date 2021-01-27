@@ -1,24 +1,25 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
-import { ETextarea, ETextareaModule } from './';
+import { EInput, EInputModule } from '../input';
+import { EBaseInput } from '../base-input/base-input';
 
 # Textarea
 
-<Meta title="Core/Textarea" decorators={[moduleMetadata({ imports: [ETextareaModule] })]} />
+<Meta title="Core/Textarea" decorators={[moduleMetadata({ imports: [EInputModule] })]} />
 
-<Props of={ETextarea} />
+<Props of={EInput} />
+<Props of={EBaseInput} />
 
 <Preview>
     <Story name="default" height="200px">
         {{
             template: `
-                <e-textarea
+                <e-base-input
                     [label]="label"
-                    [width]="width"
-                    [rows]="rows">
-                </e-textarea>
+                    [width]="width">
+                    <textarea eTextarea [rows]="rows"></textarea>
+                </e-base-input>
             `,
             props: {
                 label: 'Комментарий',

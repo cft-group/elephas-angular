@@ -4,14 +4,14 @@ import {PortalModule} from '@angular/cdk/portal';
 import {EDataList} from './datalist';
 import {EDatalistItem} from './datalist-item';
 import {EDatalistContent} from './datalist-content';
-import {EDataListPipe} from './datalist.pipe';
+import {EDataListSanitizer} from './datalist-sanitizer';
 
 @NgModule({
-    declarations: [EDataList, EDatalistItem, EDatalistContent, EDataListPipe],
+    declarations: [EDataList, EDatalistItem, EDatalistContent, EDataListSanitizer],
     imports: [
         CommonModule,
         PortalModule
     ],
-    exports: [EDataList, EDatalistItem, EDatalistContent, EDataListPipe]
+    exports: [EDataList, EDatalistItem, EDatalistContent, EDataListSanitizer]
 })
 export class EDataListModule { }

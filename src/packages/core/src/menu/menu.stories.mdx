@@ -1,12 +1,11 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
 
 import { EMenu, EMenuItem, EMenuModule } from './';
 
 # Menu
 
-<Meta title="Core/Menu" decorators={[moduleMetadata({ imports: [CommonModule, EMenuModule] })]} />
+<Meta title="Core/Menu" decorators={[moduleMetadata({ imports: [EMenuModule] })]} />
 
 <Props of={EMenu} />
 

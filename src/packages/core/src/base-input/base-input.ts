@@ -1,51 +1,74 @@
-import {EventEmitter, Input, Output} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {InputWidth} from './input-width.enum';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChild,
+    ElementRef,
+    Input,
+    OnDestroy,
+    ViewChild,
+    ViewEncapsulation
+} from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { InputWidth } from './input-width.enum';
+import { EBaseControl } from './base-control';
+import { EDropdown } from '../dropdown';
 
-export class EBaseInput {
+@Component({
+    selector: 'e-base-input',
+    templateUrl: './base-input.html',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class EBaseInput implements AfterContentInit, OnDestroy {
 
-    @Input() public control: FormControl = new FormControl();
-    /**
-     * Field value.
-     */
-    @Input() public value: string;
     /**
      * Additional CSS class.
      */
-    @Input() public className: string;
+    @Input() public get className(): string {
+        return this._className;
+    }
+    public set className(className: string) {
+        this._className = className;
+    }
     /**
      * Hint message. Hidden when appearance is set to error.
      */
-    @Input() public hint: string;
+    @Input() public get hint(): string {
+        return this._hint;
+    }
+    public set hint(hint: string) {
+        this._hint = hint;
+    }
     /**
      * Field label.
      */
-    @Input() public label: string;
+    @Input() public get label(): string {
+        return this._label;
+    }
+    public set label(label: string) {
+        this._label = label;
+    }
     /**
      * Field width.
      */
-    @Input() public width: InputWidth;
-    /**
-     * Visual appearance.
-     */
-    @Input() public appearance: 'error' | 'default' | 'disabled' | 'readonly' = 'default';
+    @Input() public get width(): InputWidth {
+        return this._width;
+    }
+    public set width(width: InputWidth) {
+        this._width = width;
+    }
     /**
      * Error message. Must be set when appearance is set to error.
      */
-    @Input() public error: string;
-    /**
-     * Blur handler.
-     */
-    @Output() public onBlur: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-    /**
-     * Focus handler.
-     */
-    @Output() public onFocus: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-    /**
-     * Change handler.
-     */
-    @Output() public onChange: EventEmitter<HTMLInputElement> = new EventEmitter<HTMLInputElement>();
+    @Input() public get error(): string {
+        return this._error;
+    }
+    public set error(error: string) {
+        this._error = error;
+    }
+
     /**
      * @internal
      */
@@ -53,61 +76,77 @@ export class EBaseInput {
     /**
      * @internal
      */
+    public disabled: boolean;
+    /**
+     * @internal
+     */
+    public readonly: boolean;
+    /**
+     * @internal
+     */
     public inputWidth: typeof InputWidth = InputWidth;
     /**
      * @internal
      */
-    public subs: Subscription = new Subscription();
-
+    public isSelect: boolean = false;
     /**
      * @internal
      */
-    public focus(event: FocusEvent): void {
-        this.onFocus.emit(event);
+    public isDropdown: boolean = false;
+    /**
+     * @internal
+     */
+    public focused: Observable<boolean>;
+
+    @ContentChild(EBaseControl) private control: EBaseControl;
+    @ContentChild(EDropdown) private dropdown: EDropdown;
+    @ViewChild('icon') private iconElement: ElementRef<HTMLElement>;
+
+    private _className: string;
+    private _hint: string;
+    private _label: string;
+    private _width: InputWidth;
+    private _error: string;
+    private subs: Subscription = new Subscription();
+
+    constructor(private cdr: ChangeDetectorRef) {
     }
 
-    /**
-     * @internal
-     */
-    public blur(event: FocusEvent): void {
-        this.onBlur.emit(event);
-    }
+    public ngAfterContentInit(): void {
+        if (this.control) {
+            this.isSelect = this.control.isSelect;
+            if (this.control.stateChanges) {
+                this.subs.add(this.control.stateChanges.subscribe((): void => {
+                    this.readonly = this.control.readonly;
+                    this.disabled = this.control.disabled;
+                    this.cdr.markForCheck();
+                }));
+            }
 
-    /**
-     * @internal
-     */
-    public input(event: Event): void {
-        const target: HTMLInputElement = <HTMLInputElement>event.target;
-        this.onChange.emit(target);
-    }
+            if (this.control.ngControl && this.control.ngControl.valueChanges) {
+                this.subs.add(this.control.ngControl.statusChanges.subscribe((status: string): void  => {
+                    this.hasError = status === 'INVALID';
+                    this.cdr.markForCheck();
+                }));
+            }
+        }
 
-    /**
-     * @internal
-     */
-    public setControlValue(): void {
-        if (this.value) {
-            this.control.setValue(this.value);
+        if (this.dropdown) {
+            this.isDropdown = true;
+            this.focused = this.dropdown.focused;
+            this.cdr.markForCheck();
         }
     }
 
-    /**
-     * @internal
-     */
-    public setControlDisable(): void {
-        if (this.appearance === 'disabled' || this.appearance === 'readonly') {
-            this.control.disable();
-        } else {
-            this.control.enable();
-        }
+    public ngOnDestroy(): void {
+        this.subs.unsubscribe();
     }
 
     /**
      * @internal
      */
-    public errorControlSubscribe(): void {
-        this.subs.add(this.control.statusChanges.subscribe((status: string): void => {
-            this.hasError = status === 'INVALID';
-        }));
+    public getInputSize(): string {
+        return `_e_input_size_${this.width}`;
     }
 
 }

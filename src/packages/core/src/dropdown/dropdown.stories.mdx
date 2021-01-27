@@ -1,0 +1,51 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { EInputModule } from '../input';
+import { EBaseInput } from '../base-input/base-input';
+import { EDropdown, EDropdownItem, EDropdownTriggers, EDropdownModule } from './';
+
+# Dropdown
+
+<Meta title="Core/Dropdown" decorators={[moduleMetadata({ imports: [EInputModule, EDropdownModule] })]} />
+
+<Props of={EBaseInput} />
+<Props of={EDropdown} />
+<Props of={EDropdownItem} />
+<Props of={EDropdownTriggers} />
+
+<Preview>
+    <Story name="default" height="350px">
+        {{
+            template: `
+                <e-base-input
+                    [label]="label"
+                    [width]="width"
+                    [hint]="hint">
+                    <input eInput [eDropdownTriggers]="eDropdown">
+                    <e-dropdown #eDropdown>
+                        <e-dropdown-item *ngFor="let option of options" [value]="option.value">{{ option.title }}</e-dropdown-item>
+                    </e-dropdown>
+                </e-base-input>
+            `,
+            props: {
+                label: 'Label',
+                width: 6,
+                hint: 'Hint',
+                options: [{
+                    value: '', title: 'None'
+                    }, {
+                    value: 'One', title: 'One'
+                    }, {
+                    value: 'Two', title: 'Two'
+                    }, {
+                    value: 'Three', title: 'Three'
+                    }, {
+                    value: 'Four', title: 'Four'
+                    }, {
+                    value: 'Five', title: 'Five'
+                }]
+            }
+        }}
+    </Story>
+</Preview>

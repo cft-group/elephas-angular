@@ -1,25 +1,22 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {EDropdown} from '../dropdown';
 
-import {EMenu} from '../menu';
-
-describe('EMenu', (): void => {
-    let component: EMenu;
-    let fixture: ComponentFixture<EMenu>;
+describe('EDropdown', (): void => {
+    let component: EDropdown;
+    let fixture: ComponentFixture<EDropdown>;
 
     beforeEach(waitForAsync((): void => {
         TestBed.configureTestingModule({
-            declarations: [ EMenu ]
+            declarations: [ EDropdown ]
         })
             .compileComponents();
-    }));
 
-    beforeEach((): void => {
-        fixture = TestBed.createComponent(EMenu);
+        fixture = TestBed.createComponent(EDropdown);
         component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+    }));
 
     it('should create', (): void => {
         expect(component).toBeTruthy();
     });
+
 });

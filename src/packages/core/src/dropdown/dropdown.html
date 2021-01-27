@@ -1,0 +1,3 @@
+<div #dropdownCard perfectScrollbar (cdkObserveContent)="onContentChanged()">
+    <ng-content *ngIf="opened" select="e-dropdown-item"></ng-content>
+</div>

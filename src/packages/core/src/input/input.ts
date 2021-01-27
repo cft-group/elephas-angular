@@ -1,33 +1,34 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
-import {EBaseInput} from '../base-input/base-input';
+import {Directive, HostBinding, Input, OnChanges, OnDestroy} from '@angular/core';
+import {EBaseControl, EBaseControlRef} from '../base-input';
 
-@Component({
-    selector: 'e-input',
-    templateUrl: './input.html',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+@Directive({
+    selector: 'input[eInput], textarea[eTextarea]',
+    providers: [{ provide: EBaseControl, useExisting: EInput }]
 })
-export class EInput extends EBaseInput implements OnChanges, OnInit, OnDestroy {
+export class EInput extends EBaseControlRef implements EBaseControl, OnChanges, OnDestroy {
 
-    @Input() public type: string = 'text';
+    /**
+     * Whether input is readonly.
+     */
+    @Input() public readonly: boolean = false;
 
-    public ngOnChanges(changes: SimpleChanges): void {
-        if (this.control && 'appearance' in changes) {
-            this.setControlDisable();
-        }
-        if (this.value && 'value' in changes) {
-            this.setControlValue();
-        }
+    /**
+     * Whether input is placeholder.
+     */
+    @Input()
+    @HostBinding('placeholder') public placeholder: string = ' ';
+
+    @HostBinding('readonly') public get readonlyState(): boolean {
+        this.stateChanges.next();
+        return this.readonly;
     }
 
-    public ngOnInit(): void {
-        this.setControlValue();
-        this.setControlDisable();
-        this.errorControlSubscribe();
+    public ngOnChanges(): void {
+        this.stateChanges.next();
     }
 
     public ngOnDestroy(): void {
-        this.subs.unsubscribe();
+        this.stateChanges.complete();
     }
 
 }
