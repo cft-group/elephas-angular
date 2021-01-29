@@ -1,11 +1,9 @@
-import {ComponentPortal} from '@angular/cdk/portal';
-
 export interface DataListItem {
     /**
      * Visual appearance.
      * @default default
      */
-    appearance: 'default' | 'danger' | 'warning';
+    appearance?: 'default' | 'danger' | 'warning';
 
     /**
      * Item title.
@@ -15,7 +13,7 @@ export interface DataListItem {
     /**
      * Item value.
      */
-    value: any;
+    value?: any;
 }
 
 export interface DataList {
@@ -27,7 +25,7 @@ export interface DataList {
     /**
      * List items.
      */
-    items: Partial<DataListItem[]>;
+    items: DataListItem[];
 
     /**
      * Title width in pixels.

@@ -9,8 +9,19 @@ import {ComponentPortal} from '@angular/cdk/portal';
 })
 export class EDatalistContent implements OnInit {
 
-    @Input() public content: any;
+    @Input() public get content(): any {
+        return this._content;
+    }
+    public set content(content: any) {
+        this._content = content;
+    }
+
+    /**
+     * @internal
+     */
     public contentPortal: ComponentPortal<any>;
+
+    private _content: any;
 
     public ngOnInit(): void {
         if (typeof this.content !== 'string') {
