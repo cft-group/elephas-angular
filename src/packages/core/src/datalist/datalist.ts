@@ -9,6 +9,13 @@ import {DataList} from './models';
 })
 export class EDataList {
 
-    @Input() public data: DataList;
+    @Input() public get data(): DataList {
+        return this._data;
+    }
+    public set data(data: DataList) {
+        this._data = data;
+    }
+
+    private _data: DataList;
 
 }
