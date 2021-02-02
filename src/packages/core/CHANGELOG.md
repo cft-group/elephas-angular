@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.1](https://github.com/cft-group/elephas-angular/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2021-02-02)
+
+
+### Bug Fixes
+
+* **datalist:** fix datalist component ([0b5dacf](https://github.com/cft-group/elephas-angular/commit/0b5dacf9d05412359a4c49f526feb0b26fef49b1))
+
+
+### Features
+
+* **dropdown:** add dropdown component ([0812f19](https://github.com/cft-group/elephas-angular/commit/0812f1950d619f0d4248718f651439c6fa1806cb))
+
+
+
+
+
 # [1.0.0-beta.0](https://github.com/cft-group/elephas-angular/compare/v1.0.0-alpha.5...v1.0.0-beta.0) (2020-12-14)
 
 

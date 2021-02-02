@@ -5,9 +5,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "dependencies": {
-    "@elephas/angular-core": "1.0.0-beta.0"
+    "@elephas/angular-core": "1.0.0-beta.1"
   },
   "peerDependencies": {
     "@angular/common": "^10.0.5",
