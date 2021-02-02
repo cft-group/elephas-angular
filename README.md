@@ -1,6 +1,6 @@
 # [Elephas Angular](https://cft-group.github.io/elephas-angular/)
 
-[![npm version](https://img.shields.io/npm/v/@elephas/angular-core/latest)](https://www.npmjs.com/package/@elephas/react-core) ![Build status](https://img.shields.io/github/workflow/status/cft-group/elephas-angular/Tests)
+[![npm version](https://img.shields.io/npm/v/@elephas/angular-core/latest)](https://www.npmjs.com/package/@elephas/angular-core) ![Build status](https://img.shields.io/github/workflow/status/cft-group/elephas-angular/Tests)
 
 Elephas Design System was created to build consistent user interfaces across different teams and products at [Center of Financial Technologies](https://cft.group/en/). Our goal is to maintain great developer experience for software engineers, no matter which platform they are building on.
 
