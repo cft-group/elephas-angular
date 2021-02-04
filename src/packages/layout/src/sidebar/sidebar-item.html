@@ -1,0 +1,11 @@
+<ng-content select="[icon]" *eSidebarIcon></ng-content>
+<ng-container *ngIf="!text">
+    <ng-content select="[text]" *eSidebarText></ng-content>
+</ng-container>
+<ng-container *ngIf="text">
+    <div *eSidebarText>{{ text }}</div>
+</ng-container>
+<ng-content></ng-content>
+<ng-container *ngIf="tooltip">
+    <div class="_e_sidebar-item__tooltip _e_tooltip _e_tooltip_right">{{ tooltip }}</div>
+</ng-container>
