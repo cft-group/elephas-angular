@@ -1,12 +1,13 @@
 import {Directive, ElementRef, OnChanges, OnDestroy, OnInit, Optional, Self} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {EBaseControl, EBaseControlRef} from '../base-input';
+import {EBaseControl} from '../base-input/base-control';
+import {EBaseInputControl} from '../base-input/base-input-control';
 
 @Directive({
     selector: 'select[eSelect]',
     providers: [{ provide: EBaseControl, useExisting: ESelect }]
 })
-export class ESelect extends EBaseControlRef implements EBaseControl, OnChanges, OnInit, OnDestroy {
+export class ESelect extends EBaseInputControl implements EBaseControl, OnChanges, OnInit, OnDestroy {
 
     /**
      * @internal

@@ -3,7 +3,7 @@ import {ETooltipPosition} from './models';
 
 @Component({
     selector: 'e-tooltip',
-    template: `{{ text }}`,
+    template: '<ng-content></ng-content>',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -17,28 +17,6 @@ export class ETooltip {
     }
     public set position(position: ETooltipPosition) {
         this.tooltipPosition = position;
-    }
-    /**
-     * Additional CSS class.
-     */
-    @Input() public get className(): string {
-        return this.tooltipClassName;
-    }
-    public set className(className: string) {
-        this.tooltipClassName = className;
-    }
-    /**
-     * Tooltip text.
-     */
-    @Input() public get text(): string {
-        return this.tooltipText;
-    }
-    public set text(text: string) {
-        this.tooltipText = text;
-    }
-
-    @HostBinding('class') public get tooltipClass(): string {
-        return this.tooltipClassName ? this.tooltipClassName : '';
     }
     @HostBinding('class._e_tooltip') public tooltip: boolean = true;
     @HostBinding('class._e_tooltip_top') public get isTooltipTop(): boolean {
@@ -67,7 +45,5 @@ export class ETooltip {
     }
 
     private tooltipPosition: ETooltipPosition;
-    private tooltipClassName: string;
-    private tooltipText: string;
 
 }

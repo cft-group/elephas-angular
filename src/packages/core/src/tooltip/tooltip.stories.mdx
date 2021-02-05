@@ -13,7 +13,7 @@ import { ETooltip, ETooltipModule } from './';
     <Story name="top" height="200px">
         {{           
             template: `
-                <e-tooltip [position]="position" [text]="text"></e-tooltip>
+                <e-tooltip [position]="position">{{ text }}</e-tooltip>
             `,
             props: {
                 position: 'top',
@@ -27,7 +27,7 @@ import { ETooltip, ETooltipModule } from './';
     <Story name="right" height="200px">
         {{           
             template: `
-                <e-tooltip [position]="position" [text]="text"></e-tooltip>
+                <e-tooltip [position]="position">{{ text }}</e-tooltip>
             `,
             props: {
                 position: 'right',
@@ -41,7 +41,7 @@ import { ETooltip, ETooltipModule } from './';
     <Story name="bottom" height="200px">
         {{           
             template: `
-                <e-tooltip [position]="position" [text]="text"></e-tooltip>
+                <e-tooltip [position]="position">{{ text }}</e-tooltip>
             `,
             props: {
                 position: 'bottom',
@@ -55,7 +55,7 @@ import { ETooltip, ETooltipModule } from './';
     <Story name="left" height="200px">
         {{           
             template: `
-                <e-tooltip [position]="position" [className]="className" [text]="text"></e-tooltip>
+                <e-tooltip [position]="position" [class]="className">{{ text }}</e-tooltip>
             `,
             props: {
                 position: 'left',

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {EBaseInputModule} from '../base-input';
+import {EBaseInputModule} from '../base-input/base-input.module';
 import {ESelect} from './select';
 
 @NgModule({

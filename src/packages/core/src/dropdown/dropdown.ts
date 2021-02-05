@@ -72,7 +72,7 @@ export class EDropdown implements AfterContentInit, OnDestroy {
      */
     public focused: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    @ViewChild('dropdownCard') private elementRef: ElementRef<HTMLDivElement>;
+    @ViewChild('dropdownCard') private elementRef: ElementRef<HTMLElement>;
     private _opened: boolean = false;
     private subs: Subscription = new Subscription();
 
@@ -89,7 +89,7 @@ export class EDropdown implements AfterContentInit, OnDestroy {
             const dropdownItems: NodeListOf<Element> = this.elementRef.nativeElement.querySelectorAll('._e_dropdown__item');
             const height: number = dropdownItems[0].getBoundingClientRect().height;
             const dropdownHeight: number = height * defaultMinimumItemsCount;
-            const element: HTMLDivElement = this.elementRef.nativeElement;
+            const element: HTMLElement = this.elementRef.nativeElement;
             element.scrollTop = this.getItemScrollPosition((index * height), height, element.scrollTop, dropdownHeight);
             this.items.toArray()[index].setActiveStyles();
             this.previousItemActive = index;
