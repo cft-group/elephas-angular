@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.3](https://github.com/cft-group/elephas-angular/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2021-02-05)
+
+
+### Bug Fixes
+
+* **base-input:** fix base-input component ([91acb4c](https://github.com/cft-group/elephas-angular/commit/91acb4c617cea294fc093d4c4cd92b7a37200a04))
+
+
+
+
+
 # [1.0.0-beta.2](https://github.com/cft-group/elephas-angular/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2021-02-02)
 
 **Note:** Version bump only for package @elephas/angular-core
