@@ -17,5 +17,6 @@ export * from './src/snackbar/index';
 export * from './src/spinner/index';
 export * from './src/tabs/index';
 export * from './src/tag/index';
+export * from './src/toggle-button/index';
 export * from './src/tooltip/index';
 export * from './src/upload/index';

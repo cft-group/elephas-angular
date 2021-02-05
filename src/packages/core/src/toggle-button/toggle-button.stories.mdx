@@ -1,0 +1,39 @@
+import {Meta, Props, Preview, Story} from '@storybook/addon-docs/blocks';
+import {moduleMetadata} from '@storybook/angular';
+import {EToggleButtonModule} from './toggle-button.module';
+import {EToggleButton} from './toggle-button';
+
+# ToggleButton
+
+<Meta title="Core/ToggleButton" decorators={[moduleMetadata({ imports: [EToggleButtonModule] })]} />
+
+<Props of={EToggleButton} />
+
+<Preview>
+    <Story name="default" height="100px">
+        {{
+            template: `
+                <e-toggle-button [items]="items" [value]="value"></e-toggle-button>
+            `,
+            props: {
+                items: ['Left', 'Middle', 'Right'],
+                value: 'Right'
+            }
+        }}
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="multiple" height="100px">
+        {{
+            template: `
+                <e-toggle-button [items]="items" [multiple]="multiple" [value]="value"></e-toggle-button>
+            `,
+            props: {
+                items: ['Left', 'Middle', 'Right'],
+                value: ['Left', 'Middle'],
+                multiple: true
+            }
+        }}
+    </Story>
+</Preview>
