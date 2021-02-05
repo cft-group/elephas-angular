@@ -13,7 +13,7 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { InputWidth } from './input-width.enum';
 import { EBaseControl } from './base-control';
-import { EDropdown } from '../dropdown';
+import { EDropdown } from '../dropdown/dropdown';
 
 @Component({
     selector: 'e-base-input',

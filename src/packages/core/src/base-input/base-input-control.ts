@@ -1,9 +1,10 @@
-import {HostBinding, Input, Optional, Self} from '@angular/core';
+import { Directive, HostBinding, Input, Optional, Self } from '@angular/core';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {NgControl} from '@angular/forms';
 import {Subject} from 'rxjs';
 
-export abstract class EBaseControlRef {
+@Directive()
+export abstract class EBaseInputControl {
 
     @Input()
     public get disabled(): boolean {

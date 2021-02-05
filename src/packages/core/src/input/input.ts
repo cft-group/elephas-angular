@@ -1,11 +1,12 @@
 import {Directive, HostBinding, Input, OnChanges, OnDestroy} from '@angular/core';
-import {EBaseControl, EBaseControlRef} from '../base-input';
+import {EBaseControl} from '../base-input/base-control';
+import {EBaseInputControl} from '../base-input/base-input-control';
 
 @Directive({
     selector: 'input[eInput], textarea[eTextarea]',
     providers: [{ provide: EBaseControl, useExisting: EInput }]
 })
-export class EInput extends EBaseControlRef implements EBaseControl, OnChanges, OnDestroy {
+export class EInput extends EBaseInputControl implements EBaseControl, OnChanges, OnDestroy {
 
     /**
      * Whether input is readonly.

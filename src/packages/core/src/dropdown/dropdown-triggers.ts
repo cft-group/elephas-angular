@@ -77,10 +77,12 @@ export class EDropdownTriggers implements AfterViewInit, OnDestroy {
         this.subs.add(merge(...this.dropdown.items.map((item: EDropdownItem): Observable<string> => item.onSelectionChange))
             .pipe(delay(0))
             .subscribe((value: string): void => {
-                this.elementRef.nativeElement.value = value;
-                this.dropdown.items.toArray().forEach((it: EDropdownItem): void => {
-                    it.selected = it.value === value;
-                });
+                this.elementRef.nativeElement.value = value || '';
+                if (value) {
+                    this.dropdown.items.toArray().forEach((it: EDropdownItem): void => {
+                        it.selected = it.value === value;
+                    });
+                }
                 this.dropdown.opened = false;
                 this.elementRef.nativeElement.blur();
                 this.dropdown.focused.next(false);
