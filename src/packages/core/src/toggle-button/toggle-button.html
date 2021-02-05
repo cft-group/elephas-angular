@@ -1,0 +1,10 @@
+<button
+    class="_e_toggle-button__item"
+    [ngClass]="{
+        '_e_toggle-button__item_selected': button.selected
+    }"
+    type="button"
+    *ngFor="let button of toggleButtonItems"
+    (click)="onToggle(button)">
+    {{ button.item }}
+</button>
