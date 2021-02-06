@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.4](https://github.com/cft-group/elephas-angular/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2021-02-06)
+
+
+### Features
+
+* **header:** add header component ([d9e8ecc](https://github.com/cft-group/elephas-angular/commit/d9e8ecc4444c1030ac5f49e7e37f5cb9555cd1f8))
+
+
+
+
+
 # [1.0.0-beta.3](https://github.com/cft-group/elephas-angular/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2021-02-05)
 
 

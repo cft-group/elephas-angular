@@ -5,7 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "peerDependencies": {
     "@angular/common": "^10.0.5",
     "@angular/compiler": "^10.0.5",
@@ -15,8 +15,8 @@
     "@elephas/core": "^1.0.0",
     "@types/mime": "^2.0.3",
     "mime": "^2.4.6",
-    "ngx-perfect-scrollbar": "^10.0.1",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "ngx-perfect-scrollbar": "^10.0.1"
   },
   "scripts": {
     "build": "export PACKAGE_NAME=`basename $INIT_CWD` && ng build --prod $PACKAGE_NAME",

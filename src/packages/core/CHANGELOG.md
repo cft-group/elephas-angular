@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.4](https://github.com/cft-group/elephas-angular/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2021-02-06)
+
+
+### Features
+
+* **datepicker:** add datepicker component ([51a1a7a](https://github.com/cft-group/elephas-angular/commit/51a1a7a9c9c3f269327742aaa0a73d507d2522a1))
+* **toggle-button:** add toggle-button component ([5b580f4](https://github.com/cft-group/elephas-angular/commit/5b580f4fd876849e87976c2799469cdfe2de84c2))
+
+
+
+
+
 # [1.0.0-beta.3](https://github.com/cft-group/elephas-angular/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2021-02-05)
 
 
