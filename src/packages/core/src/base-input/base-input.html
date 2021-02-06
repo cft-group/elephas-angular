@@ -3,6 +3,7 @@
     [class._e_input]="true"
     [class._e_input_focused]="focused | async"
     [class._e_dropdown]="isDropdown"
+    [class._e_datepicker]="isDatepicker"
     [class._e_select]="isSelect"
     [class._e_input_appearance_disabled]="disabled"
     [class._e_input_appearance_readonly]="readonly"
@@ -27,7 +28,7 @@
                 </svg>
             </span>
         </span>
-        <ng-content select="e-dropdown"></ng-content>
+        <ng-content select="e-dropdown,e-datepicker"></ng-content>
     </label>
     <span  *ngIf="hint && !hasError"  class="_e_input__hint">{{ hint }}</span>
     <span *ngIf="hasError && error" class="_e_input__hint">{{ error }}</span>

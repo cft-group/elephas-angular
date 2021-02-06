@@ -14,6 +14,7 @@ import { Observable, Subscription } from 'rxjs';
 import { InputWidth } from './input-width.enum';
 import { EBaseControl } from './base-control';
 import { EDropdown } from '../dropdown/dropdown';
+import { EDatepicker } from '../datepicker/datepicker';
 
 @Component({
     selector: 'e-base-input',
@@ -96,10 +97,15 @@ export class EBaseInput implements AfterContentInit, OnDestroy {
     /**
      * @internal
      */
+    public isDatepicker: boolean = false;
+    /**
+     * @internal
+     */
     public focused: Observable<boolean>;
 
     @ContentChild(EBaseControl) private control: EBaseControl;
     @ContentChild(EDropdown) private dropdown: EDropdown;
+    @ContentChild(EDatepicker) private datepicker: EDatepicker;
     @ViewChild('icon') private iconElement: ElementRef<HTMLElement>;
 
     private _className: string;
@@ -136,6 +142,10 @@ export class EBaseInput implements AfterContentInit, OnDestroy {
             this.focused = this.dropdown.focused;
             this.cdr.markForCheck();
         }
+
+        if (this.datepicker) {}
+        this.isDatepicker = true;
+        this.cdr.markForCheck();
     }
 
     public ngOnDestroy(): void {

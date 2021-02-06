@@ -1,0 +1,9 @@
+<div class="_e_dpcal__cell _e_dpcal__weekday" *ngFor="let nameOfDay of nameOfDays">{{ nameOfDay }}</div>
+<div
+    class="_e_dpcal__cell _e_dpcal__date"
+    [ngClass]="{
+        '_e_dpcal__date_empty': !day
+    }"
+    *ngFor="let day of days">
+    <ng-container *ngIf="day">{{ day }}</ng-container>
+</div>

@@ -81,6 +81,7 @@
     "karma-jasmine-html-reporter": "^1.5.4",
     "lerna": "^3.22.1",
     "mime": "^2.4.6",
+    "moment": "^2.29.1",
     "ng-packagr": "^10.0.4",
     "protractor": "^7.0.0",
     "react": "^16.13.1",

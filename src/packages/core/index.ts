@@ -6,6 +6,7 @@ export * from './src/button/index';
 export * from './src/checkbox/index';
 export * from './src/chip/index';
 export * from './src/datalist/index';
+export * from './src/datepicker/index';
 export * from './src/dropdown/index';
 export * from './src/info/index';
 export * from './src/input/index';
