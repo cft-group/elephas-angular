@@ -22,8 +22,4 @@ describe('EBreadcrumbs', (): void => {
     it('should create', (): void => {
         expect(component).toBeTruthy();
     });
-
-    it('should have as className "undefined"', (): void => {
-        expect(component.className).toEqual(undefined);
-    });
 });
