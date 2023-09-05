@@ -148,6 +148,7 @@ export class ECheckbox implements ControlValueAccessor, OnInit, OnDestroy {
         this._indeterminate = false;
         this.onCheckedChange.emit(checkbox);
         this.onIndeterminateChange.emit(this._indeterminate);
+        this.onChangeCallback(checkbox.checked);
         this.cdr.markForCheck();
     }
 
