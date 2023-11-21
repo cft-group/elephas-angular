@@ -1,0 +1,8 @@
+<div class=_e_heading>
+    <div class="_e_heading__main" #headingMain>
+        <ng-content select="e-breadcrumbs,[eBreadcrumbs]"></ng-content>
+        <h1 class=_e_heading__title>{{ title }}</h1>
+        <ng-content select="[heading-inline-actions]" *eHeadingActions="['_e_heading__inline-actions', headingMain]"></ng-content>
+    </div>
+    <ng-content select="[heading-actions]" *eHeadingActions="['_e_heading-actions', null]"></ng-content>
+</div>
